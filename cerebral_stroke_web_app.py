@@ -61,27 +61,27 @@ def main():
         # getting the input data from the user
     
         gender = st.selectbox("Enter Gender (Male/Female/Other): ", ['Select One Option', 'Male', 'Female', 'Other'])
+        age = st.number_input("Enter Age: ")
+        hypertension = st.selectbox("Enter Hypertension (Yes/No): ", ['Select One Option', 'Yes', 'No'])
+        heart_disease = st.selectbox("Enter Heart Disease (Yes/No): ", ['Select One Option', 'Yes', 'No'])
         ever_married = st.selectbox("Enter Ever Married (Yes/No): ", ['Select One Option', 'Yes', 'No'])
         work_type = st.selectbox("Enter Work Type (Govt_job/Private/Self-employed/Children/Never_worked): ", ['Select One Option', 'Govt_job', 'Private', 'Self-employed', 'Children', 'Never_worked'])
         residence_type = st.selectbox("Enter Residence Type (Urban/Rural): ", ['Select One Option', 'Urban', 'Rural'])
-        smoking_status = st.selectbox("Enter Smoking Status (formerly smoked/never smoked/smokes/Unknown): ", ['Select One Option', 'formerly smoked', 'never smoked', 'smokes', 'Unknown'])
-        hypertension = st.selectbox("Enter Hypertension (Yes/No): ", ['Select One Option', 'Yes', 'No'])
-        heart_disease = st.selectbox("Enter Heart Disease (Yes/No): ", ['Select One Option', 'Yes', 'No'])
-        age = st.number_input("Enter Age: ")
-        bmi = st.number_input("Enter BMI: ")
         avg_glucose_level = st.number_input("Enter Average glucose Level: ")
+        bmi = st.number_input("Enter BMI: ")
+        smoking_status = st.selectbox("Enter Smoking Status (formerly smoked/never smoked/smokes/Unknown): ", ['Select One Option', 'formerly smoked', 'never smoked', 'smokes', 'Unknown'])
     
     # Create an empty pandas dataframe with the given columns
-    input_data = pd.DataFrame(columns=['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status', 'hypertension', 'heart_disease', 'age', 'bmi', 'avg_glucose_level'])
+    input_data = pd.DataFrame(columns=['gender', 'age', 'hypertension', 'heart_disease', 'ever_married', 'work_type', 'Residence_type', 'avg_glucose_level', 'bmi', 'smoking_status'])
     
     # Add the user input to the pandas dataframe as a new row
-    input_data.loc[0] = [gender, ever_married, work_type, residence_type, smoking_status, hypertension, heart_disease, age, bmi, avg_glucose_level]
+    input_data.loc[0] = [gender, age, hypertension, heart_disease, ever_married, work_type, residence_type, avg_glucose_level, bmi, smoking_status]
     
     # Print the resulting dataframe
     #print(input_data)
 
     # convert categorical columns to numerical values
-    input_data.replace({'gender':{'Male':0, 'Female':1, 'Other':2}, 'ever_married':{'No':0, 'Yes':1}, 'work_type':{'Private':0, 'Self-employed':1, 'children':2, 'Govt_job':3, 'Never_worked':4}, 'Residence_type':{'Rural':0, 'Urban':1}, 'smoking_status':{'never smoked':0, 'Unknown':1, 'formerly smoked':2, 'smokes':3}, 'hypertension':{'No':0, 'Yes':1}, 'heart_disease':{'No':0, 'Yes':1}}, inplace=True)
+    input_data.replace({'gender':{'Male':0, 'Female':1, 'Other':2}, 'hypertension':{'No':0, 'Yes':1}, 'heart_disease':{'No':0, 'Yes':1}, 'ever_married':{'No':0, 'Yes':1}, 'work_type':{'Private':0, 'Self-employed':1, 'children':2, 'Govt_job':3, 'Never_worked':4}, 'Residence_type':{'Rural':0, 'Urban':1}, 'smoking_status':{'never smoked':0, 'Unknown':1, 'formerly smoked':2, 'smokes':3}}, inplace=True)
 
     # Print the resulting dataframe
     #print(input_data)
