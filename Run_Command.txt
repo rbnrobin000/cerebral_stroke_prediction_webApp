@@ -1,0 +1,2 @@
+To Activate: streamlitenv\Scripts\activate
+To Run: streamlit run cerebral_stroke_web_app.py
